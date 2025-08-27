@@ -1,0 +1,1 @@
+MIT License - allows others to use your code with attribution
