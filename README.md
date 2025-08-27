@@ -22,6 +22,9 @@ model = joblib.load('f1predictor.pkl')
 scaler = joblib.load('f1scaler.pkl')
 
 Example: Predicting podium probability for Lewis Hamilton at Monaco GP 2024
+
+
+
 new_race_data = {
 'year': 2024,
 'round': 8,
@@ -58,12 +61,18 @@ new_race_data = {
 }
 
 Create input DataFrame
+
+
 X_new = pd.DataFrame([new_race_data], columns=feature_columns)
 
 CRITICAL: Scale the input data using the same scaler from training
+
+
 X_new_scaled = scaler.transform(X_new)
 
 Make prediction
+
+
 podium_probability = model.predict_proba(X_new_scaled)
 podium_prediction = model.predict(X_new_scaled)
 
@@ -71,6 +80,8 @@ print(f"Podium Probability: {podium_probability:.3f}")
 print(f"Podium Prediction: {'Podium Finish' if podium_prediction == 1 else 'No Podium'}")
 
 Example output:
+
+
 Podium Probability: 0.687
 
 
